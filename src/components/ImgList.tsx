@@ -34,23 +34,20 @@ export default function ImgList() {
     return <div>Loading...</div>;
   } else {
     return (
-      <ul>
-        {items.map(item => (
-          <li key={item.id}>
-            {item.name} {item.price}
-          </li>
-        ))}
-      </ul>
+      <Box>
+        <ul>
+          {items.map(item => (
+            <li key={item.id}>
+              {item.name} {item.price}
+            </li>
+          ))}
+        </ul>
+        <LogoImg/>
+        <LogoImg/>
+        <LogoImg/>
+        <LogoImg/>
+        <LogoImg/>
+      </Box>
     );
   }
-
-  return (
-    <Box>
-      <LogoImg/>
-      <LogoImg/>
-      <LogoImg/>
-      <LogoImg/>
-      <LogoImg/>
-    </Box>
-  )
 }
