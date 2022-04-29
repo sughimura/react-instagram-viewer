@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 export default function ImgList() {
   const [error, setError] = useState<{ message: string } | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<{ id: number, name: string, price: number }[]>([]);
 
   // Note: the empty deps array [] means
   // this useEffect will run once
