@@ -15,7 +15,7 @@ function App() {
             </Typography>
             <IconButton
               size="large"
-              edge="start"
+              edge="end"
               color="inherit"
               aria-label="menu"
             >
