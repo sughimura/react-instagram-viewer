@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import LogoImg from './components/LogoImg';
 import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import ImgList from './components/ImgList';
 
 function App() {
   return (
@@ -23,11 +23,7 @@ function App() {
             </IconButton>
           </Toolbar>
         </AppBar>
-        <LogoImg/>
-        <LogoImg/>
-        <LogoImg/>
-        <LogoImg/>
-        <LogoImg/>
+        <ImgList/>
       </Box>
     </div>
   );
