@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 
 type Error = { message: string }
+type Item = { id: number, name: string, price: number }
 
 export default function ImgList() {
   const [error, setError] = useState<Error | null>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
-  const [items, setItems] = useState<{ id: number, name: string, price: number }[]>([]);
+  const [items, setItems] = useState<Item[]>([]);
 
   // Note: the empty deps array [] means
   // this useEffect will run once
