@@ -6,6 +6,10 @@ function App() {
   return (
     <div className="App">
       <LogoImg/>
+      <LogoImg/>
+      <LogoImg/>
+      <LogoImg/>
+      <LogoImg/>
     </div>
   );
 }
