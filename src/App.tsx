@@ -23,12 +23,12 @@ function App() {
             </IconButton>
           </Toolbar>
         </AppBar>
+        <LogoImg/>
+        <LogoImg/>
+        <LogoImg/>
+        <LogoImg/>
+        <LogoImg/>
       </Box>
-      <LogoImg/>
-      <LogoImg/>
-      <LogoImg/>
-      <LogoImg/>
-      <LogoImg/>
     </div>
   );
 }
