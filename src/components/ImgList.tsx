@@ -2,8 +2,10 @@ import LogoImg from './LogoImg';
 import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 
+type Error = { message: string }
+
 export default function ImgList() {
-  const [error, setError] = useState<{ message: string } | null>(null);
+  const [error, setError] = useState<Error | null>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [items, setItems] = useState<{ id: number, name: string, price: number }[]>([]);
 
