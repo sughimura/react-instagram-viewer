@@ -1,9 +1,17 @@
 import LogoImg from './LogoImg';
 import React, { useEffect, useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, ImageList, ImageListItem } from '@mui/material';
+import Config from '../config';
 
 type Error = { message: string }
-type Item = { id: number, name: string, price: number }
+type Item = {
+  id: number,
+  mediaUrl: string,
+  mediaType: string,
+  likeCount: number,
+  commentsCount: number,
+  caption: string
+}
 
 export default function ImgList() {
   const [error, setError] = useState<Error | null>(null);
@@ -14,21 +22,33 @@ export default function ImgList() {
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
-    fetch("https://api.example.com/items")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result);
+    const hashMonsteraId = '17843684002004351'
+    setTimeout(()=> {
+      FB.api(
+        `/${hashMonsteraId}/top_media`,
+        'get',
+        {
+          "user_id": Config.fbPageId,
+          access_token: Config.fbAccessToken,
+          "fields":"id,media_type,media_url,permalink,like_count,comments_count,caption,timestamp,children{id,media_url}"
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
+        function(response: any) {
           setIsLoaded(true);
-          setError(error);
+          setItems(
+            response.data.map((post: any): Item => {
+              return {
+                id: post.id,
+                mediaUrl: post.media_url,
+                mediaType: post.media_type,
+                likeCount: post.like_count,
+                commentsCount: post.comments_count,
+                caption: post.caption
+              }
+            })
+          );
         }
-      )
+      );
+    }, 1000)
   }, [])
 
   if (error) {
@@ -38,13 +58,17 @@ export default function ImgList() {
   } else {
     return (
       <Box>
-        <ul>
-          {items.map(item => (
-            <li key={item.id}>
-              {item.name} {item.price}
-            </li>
-          ))}
-        </ul>
+        <ImageList sx={{ width: '100%' }} cols={1}>
+          {items.map((item => (
+            <ImageListItem key={item.id}>
+              <img
+                src={item.mediaUrl}
+                loading="lazy"
+                alt='img'/>
+            </ImageListItem>
+          )))
+          }
+        </ImageList>
         <LogoImg/>
         <LogoImg/>
         <LogoImg/>
