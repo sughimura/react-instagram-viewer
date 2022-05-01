@@ -67,18 +67,12 @@ const ImgList = (props: { storedItems: Item[] }) => {
   if (error) {
     return (
       <div>
-        <br/>
-        <br/>
-        <br/>
         <div>Error: {error.message}</div>
       </div>
     );
   } else if (!isLoaded) {
     return (
       <div>
-        <br/>
-        <br/>
-        <br/>
         <div>Loading...</div>
       </div>
     );
