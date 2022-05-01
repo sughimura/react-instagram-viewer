@@ -64,7 +64,14 @@ export default function ImgList() {
       </div>
     );
   } else if (!isLoaded) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <br/>
+        <br/>
+        <br/>
+        <div>Loading...</div>
+      </div>
+    );
   } else {
     return (
       <Box>
