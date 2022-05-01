@@ -10,7 +10,9 @@ const root = ReactDOM.createRoot(
 );
 
 // NOTE: https://jasonwatmore.com/post/2020/10/28/react-facebook-how-to-use-the-facebook-sdk-in-a-react-app
-initFacebookSdk().then();
+initFacebookSdk();
+
+console.log('finish init');
 
 root.render(
   <React.StrictMode>

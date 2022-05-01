@@ -22,32 +22,30 @@ export default function ImgList() {
   // similar to componentDidMount()
   useEffect(() => {
     const hashMonsteraId = '17843684002004351'
-    setTimeout(()=> {
-      FB.api(
-        `/${hashMonsteraId}/top_media`,
-        'get',
-        {
-          "user_id": Config.fbPageUserId,
-          access_token: Config.fbAccessToken,
-          "fields":"id,media_type,media_url,permalink,like_count,comments_count,caption,timestamp,children{id,media_url}"
-        },
-        function(response: any) {
-          setIsLoaded(true);
-          setItems(
-            response.data.map((post: any): Item => {
-              return {
-                id: post.id,
-                mediaUrl: post.media_url,
-                mediaType: post.media_type,
-                likeCount: post.like_count,
-                commentsCount: post.comments_count,
-                caption: post.caption
-              }
-            })
-          );
-        }
-      );
-    }, 1000)
+    FB.api(
+      `/${hashMonsteraId}/top_media`,
+      'get',
+      {
+        "user_id": Config.fbPageUserId,
+        access_token: Config.fbAccessToken,
+        "fields":"id,media_type,media_url,permalink,like_count,comments_count,caption,timestamp,children{id,media_url}"
+      },
+      function(response: any) {
+        setIsLoaded(true);
+        setItems(
+          response.data.map((post: any): Item => {
+            return {
+              id: post.id,
+              mediaUrl: post.media_url,
+              mediaType: post.media_type,
+              likeCount: post.like_count,
+              commentsCount: post.comments_count,
+              caption: post.caption
+            }
+          })
+        );
+      }
+    );
   }, [])
 
   if (error) {
