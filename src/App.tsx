@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import ImgList from './components/ImgList';
+import ImgList, { Item } from './components/ImgList';
 
-function App() {
+const App = (props: { storedItems: Item[] }) => {
   return (
     <div className="App">
       <Box sx={{ flexGrow: 1 }}>
@@ -23,7 +23,7 @@ function App() {
             </IconButton>
           </Toolbar>
         </AppBar>
-        <ImgList/>
+        <ImgList storedItems={props.storedItems}/>
       </Box>
     </div>
   );
