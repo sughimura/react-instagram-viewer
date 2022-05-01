@@ -28,7 +28,7 @@ export default function ImgList() {
         `/${hashMonsteraId}/top_media`,
         'get',
         {
-          "user_id": Config.fbPageId,
+          "user_id": Config.fbPageUserId,
           access_token: Config.fbAccessToken,
           "fields":"id,media_type,media_url,permalink,like_count,comments_count,caption,timestamp,children{id,media_url}"
         },
