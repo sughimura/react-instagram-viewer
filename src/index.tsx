@@ -4,17 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { initFacebookSdk } from './_helpers/init-facebook-sdk';
+import { Item } from './components/ImgList';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+let storedItems: Item[] = [];
+let storedItemsStr = localStorage.getItem('storedItems');
+if (storedItemsStr) {
+  storedItems = JSON.parse(storedItemsStr);
+}
 
 // NOTE: https://jasonwatmore.com/post/2020/10/28/react-facebook-how-to-use-the-facebook-sdk-in-a-react-app
 initFacebookSdk().then();
 
 root.render(
   <React.StrictMode>
-    <App />
+    <App storedItems={storedItems} />
   </React.StrictMode>
 );
 

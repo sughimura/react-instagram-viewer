@@ -3,7 +3,7 @@ import { Box, ImageList, ImageListItem } from '@mui/material';
 import Config from '../config';
 
 type Error = { message: string }
-type Item = {
+export type Item = {
   id: number,
   mediaUrl: string,
   mediaType: string,
@@ -12,10 +12,10 @@ type Item = {
   caption: string
 }
 
-export default function ImgList() {
+const ImgList = (props: { storedItems: Item[] }) => {
   const [error, setError] = useState<Error | null>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
-  const [items, setItems] = useState<Item[]>([]);
+  const [items, setItems] = useState<Item[]>(props.storedItems);
 
   const fetchPhotos = (hashtagId: string) => {
     FB.api(
@@ -92,3 +92,4 @@ export default function ImgList() {
     );
   }
 }
+export default ImgList;
