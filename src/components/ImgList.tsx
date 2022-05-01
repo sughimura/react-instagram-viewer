@@ -1,4 +1,3 @@
-import LogoImg from './LogoImg';
 import React, { useEffect, useState } from 'react';
 import { Box, ImageList, ImageListItem } from '@mui/material';
 import Config from '../config';
@@ -69,11 +68,6 @@ export default function ImgList() {
           )))
           }
         </ImageList>
-        <LogoImg/>
-        <LogoImg/>
-        <LogoImg/>
-        <LogoImg/>
-        <LogoImg/>
       </Box>
     );
   }
