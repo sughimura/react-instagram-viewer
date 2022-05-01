@@ -32,6 +32,10 @@ export default function ImgList() {
           "fields":"id,media_type,media_url,permalink,like_count,comments_count,caption,timestamp,children{id,media_url}"
         },
         function(response: any) {
+          if (response.error) {
+            setError({ message: response.error.message });
+            return;
+          }
           setIsLoaded(true);
           setItems(
             response.data.map((post: any): Item => {
@@ -51,7 +55,14 @@ export default function ImgList() {
   }, [])
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return (
+      <div>
+        <br/>
+        <br/>
+        <br/>
+        <div>Error: {error.message}</div>
+      </div>
+    );
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
